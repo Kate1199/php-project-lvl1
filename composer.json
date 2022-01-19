@@ -1,0 +1,15 @@
+{
+    "name": "hexlet/code",
+    "description": "brain-games package",
+    "authors": [
+        {
+            "name": "Kate1199",
+            "email": "kate.kisel99@yandex.by"
+        }
+    ],
+    "license": "MIT",
+    "require": {},
+    "bin": [
+        "bin/brain-games"
+    ]
+}
