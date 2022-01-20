@@ -10,6 +10,8 @@ jobs:
         with:
           php-version: '7.4.3'
       - name: Install
-        run: composer install
+        env:
+          TOKEN: ${{ secrets.MY-TOKEN }}
+        run: make install
       - name: Launch linter
         run: make lint
