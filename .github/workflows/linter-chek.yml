@@ -1,5 +1,5 @@
 name: Linter Check
-on: [push]
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
