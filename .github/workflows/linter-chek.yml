@@ -9,7 +9,5 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4.3'
-      - name: Install
-        run: make install
       - name: Launch linter
         run: make lint
