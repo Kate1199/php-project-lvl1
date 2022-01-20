@@ -8,10 +8,8 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4.3'
+          php-version: '7.4'
       - name: Install
-        env:
-          TOKEN: ${{ secrets.MY-TOKEN }}
         run: make install
-      - name: Launch linter
+      - name: Run linter
         run: make lint
