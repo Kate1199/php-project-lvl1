@@ -1,9 +1,17 @@
 #!/usr/bin/env php
-
 <?php
+namespace hexlet\code;
 
-    namespace hexlet\code;
+use function Brain\Games\Cli\greetPlayer;
 
-    $welcomeMessage = "Welcome to the Brain Games!";
-    echo($welcomeMessage);
+$autoloadPath1 = __DIR__ . '/../../../autoload.php';
+$autoloadPath2 = __DIR__ . '/../vendor/autoload.php';
+if(file_exists($autoloadPath1)) {
+    require_once $autoloadPath1;
+} else {
+    require_once $autoloadPath2;
+}
+
+greetPlayer();
+
 
