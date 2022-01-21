@@ -10,7 +10,7 @@ jobs:
         with:
           php-version: '7.4'
       - name: Setup Linter
-        uses: squizlabs/php_codesniffer@v3
+        uses: squizlabs/php_codesniffer@v2
       - name: Install
         run: make install
       - name: Run linter
