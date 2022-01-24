@@ -5,7 +5,6 @@ namespace Brain\Games\Cli;
 use function cli\line;
 use function cli\prompt;
 
-
 function runEvenGame(string $name)
 {
     $gameRules = "Answer \"yes\" if the number is even, otherwise answer \"no\"";
@@ -29,10 +28,11 @@ function runEvenGame(string $name)
         if ($correctAnswer === $enteredAnswer) {
             line($correct);
         } else {
-            $wrongAnswer = "\"{$enteredAnswer}\" is wrong answer ;(. Correct answer was \"{$correctAnswer}\".\nLet's try again, {$name}";
+            $wrongAnswer = "\"{$enteredAnswer}\" is wrong answer ;(. Correct answer was \"{$correctAnswer}\".
+            Let's try again, {$name}";
             line($wrongAnswer);
             return;
-        }   
+        }
     }
     line($congratulations);
 }
