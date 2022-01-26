@@ -1,20 +1,9 @@
 <?php
 
-namespace Brain\Games\Cli;
+namespace Brain\Games\Even;
 
 use function Brain\Games\Cli\runGame;
-
-function generateNumbers(): array
-{
-    $numbers = [];
-    $minNumber = 0;
-    $maxNumber = 100;
-    $numberAmount = 3;
-    for ($i = 0; $i < $numberAmount; $i++) {
-        $numbers[] = rand($minNumber, $maxNumber);
-    }
-    return $numbers;
-}
+use function Brain\Games\Cli\generateNumbers;
 
 function isEven(int $number): bool
 {
