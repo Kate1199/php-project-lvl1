@@ -69,3 +69,15 @@ function runGame(string $rules, array $correctAnswers, array $expressions)
         finishGame($name);
     }
 }
+
+function generateNumbers(): array
+{
+    $numbers = [];
+    $minNumber = 1;
+    $maxNumber = 100;
+    $numberAmount = 3;
+    for ($i = 0; $i < $numberAmount; $i++) {
+        $numbers[] = rand($minNumber, $maxNumber);
+    }
+    return $numbers;
+}
