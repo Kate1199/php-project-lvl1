@@ -13,7 +13,7 @@ function countGcd(int $num1, int $num2): int
         if ($num1 % $i === 0 && $num2 % $i === 0) {
             $gcd = $i;
             break;
-        } 
+        }
     }
     return $gcd;
 }

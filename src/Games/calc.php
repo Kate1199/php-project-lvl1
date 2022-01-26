@@ -24,22 +24,22 @@ function calc(int $num1, int $num2, string $operator): int
 
 function makeExpressions(array $firstArray, array $secondArray, string $operator): array
 {
-   $expressions = [];
-   $numberOfExpressions = 3;
-   for ($i = 0; $i < $numberOfExpressions; $i++) {
-       $expressions[] = "{$firstArray[$i]} {$operator} {$secondArray[$i]}";
-   }
-   return $expressions;
+    $expressions = [];
+    $numberOfExpressions = 3;
+    for ($i = 0; $i < $numberOfExpressions; $i++) {
+        $expressions[] = "{$firstArray[$i]} {$operator} {$secondArray[$i]}";
+    }
+    return $expressions;
 }
 
 function getCorrectAnswers(array $firstArray, array $secondArray, string $operator): array
 {
-   $answers = [];
-   $numberOfExpressions = 3;
-   for ($i = 0; $i < $numberOfExpressions; $i++) {
-       $answers[] = calc($firstArray[$i], $secondArray[$i], $operator);
-   }
-   return $answers;
+    $answers = [];
+    $numberOfExpressions = 3;
+    for ($i = 0; $i < $numberOfExpressions; $i++) {
+        $answers[] = calc($firstArray[$i], $secondArray[$i], $operator);
+    }
+    return $answers;
 }
 
 function chooseOperator(): string
