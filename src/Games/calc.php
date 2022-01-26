@@ -1,50 +1,61 @@
 <?php
 
-namespace Brain\Games\Cli;
+namespace Brain\Games\Calc;
 
 use function Brain\Games\Cli\runGame;
+use function Brain\Games\Cli\generateNumbers;
 
-function generateExpressions(): array
+function calc(int $num1, int $num2, string $operator): int
 {
-    $numberOfExpressions = 3;
-    $minNumber = 0;
-    $maxNumber = 100;
-    $expressions = [];
-
-    $operators = ['+', '-', '*'];
-
-    for ($i = 0; $i < $numberOfExpressions; $i++) {
-        $num1 = rand($minNumber, $maxNumber);
-        $num2 = rand($minNumber, $maxNumber);
-        shuffle($operators);
-        $expressions[] = "{$num1} {$operators[0]} {$num2}";
+    $result = 0;
+    switch ($operator) {
+        case '+':
+            $result = $num1 + $num2;
+            break;
+        case '-':
+            $result = $num1 - $num2;
+            break;
+        case '*':
+            $result = $num1 * $num2;
+            break;
     }
-    return $expressions;
+    return $result;
 }
 
-function getAnswers(array $expressions): array
+function makeExpressions(array $firstArray, array $secondArray, string $operator): array
 {
-    $operatorIndex = 1;
-    $indexNum1 = 0;
-    $indexNum2 = 2;
-    $answer = [];
-    foreach ($expressions as $expression) {
-        $expressionArray = explode(' ', $expression);
-        if ($expressionArray[$operatorIndex] === '+') {
-            $answers[] = $expressionArray[$indexNum1] + $expressionArray[$indexNum2];
-        } elseif ($expressionArray[$operatorIndex] === '-') {
-            $answers[] = $expressionArray[$indexNum1] - $expressionArray[$indexNum2];
-        } elseif ($expressionArray[$operatorIndex] === '*') {
-            $answers[] = $expressionArray[$indexNum1] * $expressionArray[$indexNum2];
-        }
-    }
-    return $answers;
+   $expressions = [];
+   $numberOfExpressions = 3;
+   for ($i = 0; $i < $numberOfExpressions; $i++) {
+       $expressions[] = "{$firstArray[$i]} {$operator} {$secondArray[$i]}";
+   }
+   return $expressions;
+}
+
+function getCorrectAnswers(array $firstArray, array $secondArray, string $operator): array
+{
+   $answers = [];
+   $numberOfExpressions = 3;
+   for ($i = 0; $i < $numberOfExpressions; $i++) {
+       $answers[] = calc($firstArray[$i], $secondArray[$i], $operator);
+   }
+   return $answers;
+}
+
+function chooseOperator(): string
+{
+    $operators = ['+', '-', '*'];
+    shuffle($operators);
+    return $operators[0];
 }
 
 function runCalcGame()
 {
     $rules = "What is the result of the expression?";
-    $expressions = generateExpressions();
-    $correctAnswers = getAnswers($expressions);
+    $firstArray = generateNumbers();
+    $secondArray = generateNumbers();
+    $operator = chooseOperator();
+    $expressions = makeExpressions($firstArray, $secondArray, $operator);
+    $correctAnswers = getCorrectAnswers($firstArray, $secondArray, $operator);
     runGame($rules, $correctAnswers, $expressions);
 }
