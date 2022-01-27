@@ -17,7 +17,8 @@
         "src/Engine.php",
         "src/Games/calc.php",
         "src/Games/gcd.php",
-        "src/Games/progression.php"
+        "src/Games/progression.php",
+        "src/Games/prime.php"
         ]
         },
     "bin": [
@@ -25,7 +26,8 @@
         "bin/brain-even",
         "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-progression"
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.6"
