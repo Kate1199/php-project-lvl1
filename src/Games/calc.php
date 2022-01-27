@@ -22,31 +22,36 @@ function calc(int $num1, int $num2, string $operator): int
     return $result;
 }
 
-function makeExpressions(array $firstArray, array $secondArray, string $operator): array
+function makeExpressions(array $firstArray, array $secondArray, array $operators): array
 {
     $expressions = [];
     $numberOfExpressions = 3;
     for ($i = 0; $i < $numberOfExpressions; $i++) {
-        $expressions[] = "{$firstArray[$i]} {$operator} {$secondArray[$i]}";
+        $expressions[] = "{$firstArray[$i]} {$operators[$i]} {$secondArray[$i]}";
     }
     return $expressions;
 }
 
-function getCorrectAnswers(array $firstArray, array $secondArray, string $operator): array
+function getCorrectAnswers(array $firstArray, array $secondArray, array $operators): array
 {
     $answers = [];
     $numberOfExpressions = 3;
     for ($i = 0; $i < $numberOfExpressions; $i++) {
-        $answers[] = calc($firstArray[$i], $secondArray[$i], $operator);
+        $answers[] = calc($firstArray[$i], $secondArray[$i], $operators[$i]);
     }
     return $answers;
 }
 
-function chooseOperator(): string
+function chooseOperators(): array
 {
+    $numberOfOperators = 3;
     $operators = ['+', '-', '*'];
-    shuffle($operators);
-    return $operators[0];
+    $operatorsForExpressions = [];
+    for ($i = 0; $i < $numberOfOperators; $i++) {
+        shuffle($operators);
+        $operatorsForExpressions[] = $operators[0];
+    }
+    return $operatorsForExpressions;
 }
 
 function runCalcGame()
@@ -54,8 +59,8 @@ function runCalcGame()
     $rules = "What is the result of the expression?";
     $firstArray = generateNumbers();
     $secondArray = generateNumbers();
-    $operator = chooseOperator();
-    $expressions = makeExpressions($firstArray, $secondArray, $operator);
-    $correctAnswers = getCorrectAnswers($firstArray, $secondArray, $operator);
+    $operators = chooseOperators();
+    $expressions = makeExpressions($firstArray, $secondArray, $operators);
+    $correctAnswers = getCorrectAnswers($firstArray, $secondArray, $operators);
     runGame($rules, $correctAnswers, $expressions);
 }
