@@ -70,12 +70,9 @@ function runGame(string $rules, array $correctAnswers, array $expressions)
     }
 }
 
-function generateNumbers(): array
+function generateNumbers(int $minNumber = 1, int $maxNumber = 100, int $numberAmount = 3): array
 {
     $numbers = [];
-    $minNumber = 1;
-    $maxNumber = 100;
-    $numberAmount = 3;
     for ($i = 0; $i < $numberAmount; $i++) {
         $numbers[] = rand($minNumber, $maxNumber);
     }
