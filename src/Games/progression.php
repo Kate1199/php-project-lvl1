@@ -7,11 +7,6 @@ use function Brain\Games\Cli\generateNumbers;
 
 function makeArithmeticProgression(int $firstNumber, int $step): array
 {
-    // $minFirstNumber = 1;
-    // $maxFirstNumber = 10;
-    // $amountOfNumbers = 2;
-    // [$firstNumber, $step] = generateNumbers($amountOfNumbers, $minFirstNumber, $maxFirstNumber);
-
     $sum = 0;
     $arithmeticProgressionLength = 5;
     $arithmeticProgression = [];
@@ -29,7 +24,7 @@ function makeExpressions(array $firstNumbers, array $steps, $indexesToHide): arr
     $expressions = [];
     for ($i = 0; $i < $numberOfProgressions; $i++) {
         $arithmeticProgression = makeArithmeticProgression($firstNumbers[$i], $steps[$i]);
-        $arithmeticProgression[$indexesToHide[$i]] = "...";
+        $arithmeticProgression[$indexesToHide[$i]] = "..";
         $expressions[] = implode(' ', $arithmeticProgression);
     }
     return $expressions;
