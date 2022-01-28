@@ -18,7 +18,7 @@ function makeArithmeticProgression(int $firstNumber, int $step): array
     return $arithmeticProgression;
 }
 
-function makeExpressions(array $firstNumbers, array $steps, $indexesToHide): array
+function makeExpressions(array $firstNumbers, array $steps, array $indexesToHide): array
 {
     $numberOfProgressions = 3;
     $expressions = [];
