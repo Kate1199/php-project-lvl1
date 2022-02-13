@@ -28,6 +28,11 @@ function getCorrectAnswers(array $firstArray, array $secondArray): array
     return $answers;
 }
 
+function makeExpression(int $num1, int $num2): string
+{
+    return "{$num1} {$num2}";
+}
+
 function makeExpressions(array $firstArray, array $secondArray): array
 {
     $expressions = [];

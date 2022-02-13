@@ -5,69 +5,16 @@ namespace Brain\Games\Cli;
 use function cli\line;
 use function cli\prompt;
 
+use function Brain\Games\Cli\showRules;
+use function Brain\Games\Cli\doRound;
+
 function greetPlayer(): string
 {
-    $welcomeMessage = "Welcome to the Brain Games!";
-    $askForName = "May I have your name?";
-    $greet = "Hello, %s";
-
-    line($welcomeMessage);
-    $name = prompt($askForName);
-    line($greet, $name);
+    line("Welcome to the Brain Games!");
+    $name = prompt("May I have your name?");
+    line("Hello, %s", $name);
 
     return $name;
-}
-
-function showRules(string $rules)
-{
-    line($rules);
-}
-
-function askQuestion(string $expression): string
-{
-    $question = "Question: {$expression}";
-    $enteredAnswer = prompt($question);
-    line("Your answer: %s", $enteredAnswer);
-    return $enteredAnswer;
-}
-
-function showAnswer(string $correctAnswer, string $enteredAnswer, string $name): bool
-{
-    $isCorrect = true;
-    $correctAnswerOutput = "Correct!";
-    $wrongAnserOutput = "'{$enteredAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.
-    Let's try again, {$name}!";
-
-    if ($correctAnswer === $enteredAnswer) {
-        line($correctAnswerOutput);
-    } else {
-        line($wrongAnserOutput);
-        $isCorrect = false;
-    }
-    return $isCorrect;
-}
-
-function finishGame(string $name)
-{
-    $congratulations = "Congratulations, {$name}!";
-    line($congratulations);
-}
-
-function runGame(string $rules, array $correctAnswers, array $expressions)
-{
-    $name = greetPlayer();
-    $numberOfQuestions = 3;
-    $isCorrect = true;
-
-    showRules($rules);
-    for ($i = 0; $i < $numberOfQuestions && $isCorrect === true; $i++) {
-        $enteredAnswer = askQuestion($expressions[$i]);
-        $isCorrect = showAnswer($correctAnswers[$i], $enteredAnswer, $name);
-    }
-
-    if ($isCorrect) {
-        finishGame($name);
-    }
 }
 
 function generateNumbers(int $minNumber = 1, int $maxNumber = 100, int $numberAmount = 3): array
@@ -77,4 +24,52 @@ function generateNumbers(int $minNumber = 1, int $maxNumber = 100, int $numberAm
         $numbers[] = rand($minNumber, $maxNumber);
     }
     return $numbers;
+}
+
+function askQuestion(string $expression): string
+{
+    $enteredAnswer = prompt("Question: {$expression}");
+    line("Your answer: %s", $enteredAnswer);
+    return $enteredAnswer;
+}
+
+function checkAnswer(string $correctAnswer, string $enteredAnswer, string $name): bool
+{
+    $isCorrect = true;
+
+    if ($correctAnswer === $enteredAnswer) {
+        line("Correct!");
+    } else {
+        line("'{$enteredAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.
+        Let's try again, {$name}!");
+        $isCorrect = false;
+    }
+    return $isCorrect;
+}
+
+function finishGame(string $name)
+{
+    line("Congratulations, {$name}!");
+}
+
+function run(string $game)
+{
+    $name = greetPlayer();
+    $roundNumber = 3;
+
+    $firstNumbers = generateNumbers();
+    $secondNumbers = generateNumbers();
+    showRules($game);
+    for ($i = 0; $i < $roundNumber; $i++) {
+        [$expression, $correctAnswer] = doRound($game, $firstNumbers[$i], $secondNumbers[$i]);
+        $enteredAnswer = askQuestion($expression);
+        $isCorrect = checkAnswer($correctAnswer, $enteredAnswer, $name);
+        if (!$isCorrect) {
+            break;
+        }
+    }
+
+    if($isCorrect) {
+        finishGame($name);
+    }
 }
