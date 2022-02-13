@@ -2,9 +2,6 @@
 
 namespace Brain\Games\Calc;
 
-use function Brain\Games\Cli\runGame;
-use function Brain\Games\Cli\generateNumbers;
-
 function calc(int $num1, int $num2, string $operator)
 {
     $result = 0;

@@ -53,11 +53,13 @@ function finishGame(string $name)
 
 function run(string $game)
 {
-    $name = greetPlayer();
+    $isCorrect = true;
     $roundNumber = 3;
 
+    $name = greetPlayer();
     $firstNumbers = generateNumbers();
     $secondNumbers = generateNumbers();
+
     showRules($game);
     for ($i = 0; $i < $roundNumber; $i++) {
         [$expression, $correctAnswer] = doRound($game, $firstNumbers[$i], $secondNumbers[$i]);

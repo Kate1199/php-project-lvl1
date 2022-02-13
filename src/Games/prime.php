@@ -2,9 +2,6 @@
 
 namespace Brain\Games\Prime;
 
-use function Brain\Games\Cli\runGame;
-use function Brain\Games\Cli\generateNumbers;
-
 function isPrime(int $number): bool
 {
     $isPrime = true;

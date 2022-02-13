@@ -2,9 +2,6 @@
 
 namespace Brain\Games\Progression;
 
-use function Brain\Games\Cli\runGame;
-use function Brain\Games\Cli\generateNumbers;
-
 function makeArithmeticProgression(int $firstNumber, int $step): array
 {
     $sum = 0;
