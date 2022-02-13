@@ -4,7 +4,6 @@ namespace Brain\Games\Cli;
 
 use function cli\line;
 use function cli\prompt;
-
 use function Brain\Games\Cli\showRules;
 use function Brain\Games\Cli\doRound;
 
@@ -69,7 +68,7 @@ function run(string $game)
         }
     }
 
-    if($isCorrect) {
+    if ($isCorrect) {
         finishGame($name);
     }
 }

@@ -1,20 +1,14 @@
 <?php
 
 namespace Brain\Games\Cli;
-require_once __DIR__ . '/../src/autoload.php';
 
 use function cli\line;
-
 use function Brain\Games\Calc\chooseOperator;
 use function Brain\Games\Calc\makeExpression;
 use function Brain\Games\Calc\calc;
-
 use function Brain\Games\Even\isEven;
-
 use function Brain\Games\Gcd\countGcd;
-
 use function Brain\Games\Prime\isPrime;
-
 use function Brain\Games\Progression\makeProgressionExpression;
 
 function showRules(string $game)
