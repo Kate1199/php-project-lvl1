@@ -5,12 +5,14 @@ namespace Brain\Games\Cli;
 use function cli\line;
 use function cli\prompt;
 use function Brain\Games\Cli\showRules;
-use function Brain\Games\Cli\doRound;
+use function Brain\Games\Cli\doStep;
 
 function greetPlayer(): string
 {
     line("Welcome to the Brain Games!");
+
     $name = prompt("May I have your name?");
+
     line("Hello, %s", $name);
 
     return $name;
@@ -19,16 +21,20 @@ function greetPlayer(): string
 function generateNumbers(int $minNumber = 1, int $maxNumber = 100, int $numberAmount = 3): array
 {
     $numbers = [];
+
     for ($i = 0; $i < $numberAmount; $i++) {
         $numbers[] = rand($minNumber, $maxNumber);
     }
+
     return $numbers;
 }
 
 function askQuestion(string $expression): string
 {
     $enteredAnswer = prompt("Question: {$expression}");
+
     line("Your answer: %s", $enteredAnswer);
+
     return $enteredAnswer;
 }
 
@@ -41,8 +47,10 @@ function checkAnswer(string $correctAnswer, string $enteredAnswer, string $name)
     } else {
         line("'{$enteredAnswer}' is wrong answer ;(. Correct answer was '{$correctAnswer}'.
         Let's try again, {$name}!");
+
         $isCorrect = false;
     }
+
     return $isCorrect;
 }
 
@@ -62,9 +70,10 @@ function run(string $game)
 
     showRules($game);
     for ($i = 0; $i < $roundNumber; $i++) {
-        [$expression, $correctAnswer] = doRound($game, $firstNumbers[$i], $secondNumbers[$i]);
+        [$expression, $correctAnswer] = doStep($game, $firstNumbers[$i], $secondNumbers[$i]);
         $enteredAnswer = askQuestion($expression);
         $isCorrect = checkAnswer($correctAnswer, $enteredAnswer, $name);
+
         if (!$isCorrect) {
             break;
         }

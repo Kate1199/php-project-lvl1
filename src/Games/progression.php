@@ -12,6 +12,7 @@ function makeArithmeticProgression(int $firstNumber, int $step): array
         $sum += $step;
         $arithmeticProgression[] = $sum;
     }
+
     return $arithmeticProgression;
 }
 
@@ -19,5 +20,6 @@ function makeProgressionExpression(int $num, int $step, int $indexToHide): strin
 {
     $arithmeticProgression = makeArithmeticProgression($num, $step);
     $arithmeticProgression[$indexToHide] = "..";
+
     return implode(' ', $arithmeticProgression);
 }

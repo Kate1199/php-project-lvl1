@@ -7,13 +7,11 @@ use function cli\prompt;
 
 function greetPlayer(): string
 {
-    $welcomeMessage = "Welcome to the Brain Games!";
-    $askForName = "May I have your name?";
-    $greet = "Hello, %s";
+    line("Welcome to the Brain Games!");
 
-    line($welcomeMessage);
-    $name = prompt($askForName);
-    line($greet, $name);
+    $name = prompt("May I have your name?");
+
+    line("Hello, %s", $name);
 
     return $name;
 }

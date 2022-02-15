@@ -37,7 +37,7 @@ function showRules(string $game)
     line($rules);
 }
 
-function doRound(string $game, int $num1, int $num2): array
+function doStep(string $game, int $num1, int $num2): array
 {
     switch ($game) {
         case 'calc':
