@@ -1,0 +1,36 @@
+{
+    "name": "hexlet/code",
+    "description": "brain-games package",
+    "authors": [
+        {
+            "name": "Kate1199",
+            "email": "kate.kisel99@yandex.by"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "wp-cli/php-cli-tools": "^0.11.13"
+    },
+    "autoload": {
+        "files": [
+        "src/Games/even.php",
+        "src/Engine.php",
+        "src/Games/calc.php",
+        "src/Games/gcd.php",
+        "src/Games/progression.php",
+        "src/Games/prime.php",
+        "src/GameChooser.php"
+        ]
+        },
+    "bin": [
+        "bin/brain-games",
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.6"
+    }
+}

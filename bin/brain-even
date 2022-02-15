@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+namespace hexlet\code;
+
+require_once __DIR__ . '/../src/autoload.php';
+use function Brain\Games\Cli\run;
+
+run('even');
